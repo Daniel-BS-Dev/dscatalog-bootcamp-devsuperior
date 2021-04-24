@@ -7,7 +7,7 @@ import './styles.scss';
 const Home = () =>(
 
     <div className="home-contanier">
-        <div className="row home-content">
+        <div className="row home-content card-base border-10">
          <div>
              <h1 className="text-title">Conheça o melhor<br /> catalogo de produtos</h1>
              <p className="text-subtitle">Ajudaremos você a encontarr os melhores<br /> produtos diponiveis no mercado</p>
