@@ -12,7 +12,7 @@ const Home = () =>(
              <h1 className="text-title">Conheça o melhor<br /> catalogo de produtos</h1>
              <p className="text-subtitle">Ajudaremos você a encontarr os melhores<br /> produtos diponiveis no mercado</p>
              
-          <Link to="/catalog">
+          <Link to="/products">
              <ButtonIcon text="inicie agora sua busca"  />
           </Link>
         

@@ -1,21 +1,20 @@
-import React from'react';
+import React from 'react';
 import{ReactComponent as ProductImage} from '../../../../core/assets/images/product.svg';
+import ProductPrice from '../../../../core/components/ProductPrice';
 import './styles.scss';
 
-const ProductCard = () =>(
+const ProductCard = ()  => (
 
-    <div className="card-base border-10 product-card">
-        <ProductImage />
-        <div className="product-info">
-            <h6 className="product-name">
+    <div className="card-base border-10 product-card"> 
+    <ProductImage />
+    <div className="product-info">
+        <h6 className="product-name">
             Computador Desktop - Intel Core i7
-            </h6>
-            <div className="product-price-contanier">
-                <span className="product-currency">R$</span>
-                <h3 className="product-price">2.779,00</h3>
-            </div>
-
-        </div>
+        </h6>
+        <ProductPrice price="2.799,00"/>
     </div>
+
+    </div>
+
 );
 export default ProductCard;
