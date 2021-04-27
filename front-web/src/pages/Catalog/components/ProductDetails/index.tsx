@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import{ReactComponent as Seta} from'../../../../core/assets/images/Seta.svg';
-import{ReactComponent as Product} from '../../../../core/assets/images/product.svg';
 import './styles.scss';
 import ProductPrice from '../../../../core/components/ProductPrice';
+import { makeRequest } from '../../../../core/utils/Request';
+import { Product } from '../../../../core/type/Products';
 
 type ParamsType = {
     productsId: string;
@@ -13,7 +14,12 @@ type ParamsType = {
 const  ProductDetails = () => {
 
     const {productsId} = useParams<ParamsType>();
-    console.log(productsId);
+    const [product, setProduct] = useState <Product>();
+    
+    useEffect(()=>{
+        makeRequest({url:`/products/${productsId}`})
+        .then(response=>setProduct(response.data));
+    },[productsId]);
 
     return(
         <div className="product-details-contanier">
@@ -25,21 +31,21 @@ const  ProductDetails = () => {
                 <div className="row product-contanier">
                     <div className="col-6 pr-5">
                         <div className="product-details-card text-center">
-                        <Product className="product-details-image"/>
+                        <img src={product?.imgUrl} alt={product?.name} className="product-details-image"/>
                         </div>
-                        <h1 className="product-title">Computador Desktop - Intel Core i7</h1>
+                        <h1 className="product-title">
+                            {product?.name}
+                        </h1>
                     
-                        <ProductPrice price="3.799,00"/>
+                        {product?.price && <ProductPrice price={product?.price} />}
                         
                     </div>
                     <div className="col-6 product-details-card">
                         <h1 className="product-description-title">
                             Descrição do Produto
                         </h1>
-                        <p className="product-description-text">Seja um mestre em multitarefas com a capacidade para exibir quatro aplicativos 
-                        simultâneos na tela. A tela está ficando abarrotada? Crie áreas de trabalho virtuais 
-                        para obter mais espaço e trabalhar com os itens que você deseja. Além disso, todas as 
-                        notificações e principais configurações são reunidas em uma única tela de fácil acesso.
+                        <p className="product-description-text"> 
+                        {product?.description}
                         </p>
                     </div>
                 </div>
