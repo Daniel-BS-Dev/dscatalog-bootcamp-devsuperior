@@ -1,10 +1,10 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import NavBar from './core/components/Navbar';
-import Admin from './pages/Admin';
-import Catalog from './pages/Catalog';
-import ProductDetails from './pages/Catalog/components/ProductDetails';
-import Home from './pages/Home';
+import NavBar from 'core/components/Navbar';
+import Admin from 'pages/Admin';
+import Catalog from 'pages/Catalog';
+import ProductDetails from 'pages/Catalog/components/ProductDetails';
+import Home from 'pages/Home';
     
 const Router = () =>(
 <BrowserRouter>

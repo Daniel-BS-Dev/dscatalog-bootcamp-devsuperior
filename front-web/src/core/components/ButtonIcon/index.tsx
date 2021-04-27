@@ -1,5 +1,5 @@
 import React from 'react';
-import {ReactComponent as ArrowIcon} from '../../assets/images/Seta.svg';
+import {ReactComponent as ArrowIcon} from 'core/assets/images/Seta.svg';
 import'./styles.scss';
 
 
