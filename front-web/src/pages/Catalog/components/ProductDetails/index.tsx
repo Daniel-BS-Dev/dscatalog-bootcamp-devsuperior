@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import{ReactComponent as Seta} from'core/assets/images/Seta.svg';
+import{ReactComponent as ArrowIcon} from'core/assets/images/ArrowIcon.svg';
 import ProductPrice from 'core/components/ProductPrice';
 import { makeRequest } from 'core/utils/Request';
 import { Product } from 'core/type/Products';
@@ -32,7 +32,7 @@ const  ProductDetails = () => {
         <div className="product-details-contanier">
             <div className="card-base border-20 product-details">
                 <Link to="/products" className="product-details-goback">
-                    <Seta className="icon-goback"/>
+                    <ArrowIcon className="icon-goback"/>
                     <h1 className="product-title-goback">voltar</h1>
                 </Link>
                 <div className="row product-contanier">

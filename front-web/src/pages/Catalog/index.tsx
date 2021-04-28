@@ -6,16 +6,18 @@ import { makeRequest } from 'core/utils/Request';
 import ProductCard from './components/ProductCard';
 import ProductCardLoader from './components/Loaders/ProductCardLoader';
 import './styles.scss';
+import Pagination from 'core/components/pagination';
 
 const Catalog = () =>{
      
     const [productResponse, setProductResponse] = useState<ProductsRequest>();
     const [isLoading, setIsLoading] = useState(false);
+    const [activePage, setActivePage] = useState(0);
 
     useEffect(()=>{
 
         const params = {
-            page:0,
+            page:activePage,
             linesPerPage:12
         }
         setIsLoading(true);
@@ -24,7 +26,7 @@ const Catalog = () =>{
         .finally(() => {
             setIsLoading(false);
         })
-    },[])
+    },[activePage])
     
     return(
          <div className="catolog-contanier">
@@ -36,15 +38,16 @@ const Catalog = () =>{
            <Link to={`/products/${product.id}`} key={product.id}>
                <ProductCard product={product}/>
             </Link>
-            )
-          )
-       )
-           }
-       
-      
+             ))
+
+          )}
         </div>
-    </div>
-    
- );
-}
+          {productResponse && <Pagination totalPages = {productResponse?.totalPages}
+           activePage = {activePage}
+           onChange = {setActivePage}
+          /> }
+        </div>
+        )
+};
+
 export default Catalog;

@@ -3,7 +3,7 @@ import { DiagnosticCategory } from "typescript"
 
 export type ProductsRequest = {
       content: Product [];
-      totalpages: number;
+      totalPages: number;
 }
 export type Product = {
     id: number;
