@@ -1,6 +1,8 @@
 package com.devsuperior.dscatalog.reposittries.services;
 
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -32,9 +34,11 @@ public class ProductService {
 	private CategoryRepository categoryRepository;
 
 	@Transactional(readOnly = true)
-	public Page<ProductDTO> findAllPaged(PageRequest pageResquest) {
-		Page<Product> list = repository.findAll(pageResquest);
-		return list.map(x -> new ProductDTO(x));
+	public Page<ProductDTO> findAllPaged(Long categoryId, String name, PageRequest pageResquest) {
+		List<Category> categories = (categoryId == 0) ? null : Arrays.asList(categoryRepository.getOne(categoryId));
+		Page<Product> page = repository.find(categories,name, pageResquest);
+		repository.findProductWithCategories(page.getContent());
+		return page.map(x -> new ProductDTO(x, x.getCategories()));
 	}
 
 	@Transactional(readOnly = true)
